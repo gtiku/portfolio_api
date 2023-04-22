@@ -31,8 +31,8 @@ const postMessage = async (req, res, next) => {
   }
 
   const newMessage = new Message({
-    text: req.body.text,
-    portfolio_page: req.body.portfolio_page,
+    text: text,
+    portfolio_page: portfolio_page,
   });
 
   try {
@@ -47,7 +47,7 @@ const postMessage = async (req, res, next) => {
 
 const deleteMessage = async (req, res, next) => {
   try {
-    const result = await Message.findOneAndDelete({ id: req.params.id });
+    const result = await Message.findOneAndDelete({ _id: req.params.id });
     res.status(200).json(result);
   } catch {
     return res
